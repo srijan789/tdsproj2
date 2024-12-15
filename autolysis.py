@@ -257,6 +257,44 @@ def question_weird_llm(weird_prompt, weird_context):
         return "Failed to generate weird story."
 
 
+# Sample function demonstrating agentic flows
+def agentic_flow_sample(data):
+    """
+    A sample function demonstrating agentic flows without actually doing anything.
+    This is just for illustration purposes.
+    """
+    # Define the agent's state
+    agent_state = {
+        'task': 'analyze',
+        'progress': 0,
+        'completed_steps': []
+    }
+
+    # Simulate autonomous decision making
+    def decide_next_action(state):
+        if 'data_loaded' not in state['completed_steps']:
+            return 'load_data'
+        elif 'analysis_complete' not in state['completed_steps']:
+            return 'analyze_data'
+        else:
+            return 'complete'
+
+    # Simulate agent's workflow
+    while agent_state['progress'] < 100:
+        next_action = decide_next_action(agent_state)
+        
+        if next_action == 'load_data':
+            # Simulate data loading
+            agent_state['completed_steps'].append('data_loaded')
+            agent_state['progress'] += 33
+        elif next_action == 'analyze_data':
+            # Simulate analysis
+            agent_state['completed_steps'].append('analysis_complete')
+            agent_state['progress'] += 67
+        else:
+            break
+
+    return "Agentic flow simulation complete"
 
 # Main function that integrates all the steps
 def main_weird(weird_csv_file):
